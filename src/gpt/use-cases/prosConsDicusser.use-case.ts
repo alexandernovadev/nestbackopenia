@@ -26,5 +26,5 @@ export const prosConsDicusserUseCase = async (
     // max_tokens: 100,
   });
 
-  return completion.choices[0].message.content;
+  return completion.choices[0].message;
 };
