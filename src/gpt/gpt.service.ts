@@ -10,6 +10,7 @@ import {
 import { OrthographyDto } from './use-cases/dtos/orthography.dto';
 import OpenAI from 'openai';
 import {
+  AudioToTextDto,
   ProsConsDiscusserDto,
   TextToAudioDto,
   TranslateDto,
@@ -61,7 +62,12 @@ export class GptService {
     return filePath;
   }
 
-  async audioToText(audioFile: Express.Multer.File, prompt?: string) {
+  async audioToText(
+    audioFile: Express.Multer.File,
+    audioToTextDto: AudioToTextDto,
+  ) {
+    const { prompt } = audioToTextDto;
+
     return await audioToTextUseCase(this.openai, { audioFile, prompt });
   }
 }

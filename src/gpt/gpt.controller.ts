@@ -17,6 +17,7 @@ import {
 } from '@nestjs/common/decorators';
 import { OrthographyDto } from './use-cases/dtos/orthography.dto';
 import {
+  AudioToTextDto,
   ProsConsDiscusserDto,
   TextToAudioDto,
   TranslateDto,
@@ -115,7 +116,8 @@ export class GptController {
       }),
     )
     file: Express.Multer.File,
+    @Body() audioToTextDto: AudioToTextDto,
   ) {
-    return this.gptService.audioToText(file);
+    return this.gptService.audioToText(file, audioToTextDto);
   }
 }
